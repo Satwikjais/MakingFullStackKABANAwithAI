@@ -20,6 +20,25 @@ Part 5: Database modeling
 
 Now propose a database schema for the Kanban, saving it as JSON. Document the database approach in docs/ and get user sign off.
 
+### Substeps:
+- [x] Analyze the current Kanban data structure from the frontend components
+- [x] Design database schema with tables for users, boards, columns, and cards
+- [x] Define relationships between entities (user has many boards, board has many columns, column has many cards)
+- [x] Create JSON schema file documenting the database structure
+- [x] Document the SQLite database approach and migration strategy
+- [x] Create database documentation in docs/DATABASE.md
+
+### Tests:
+- [x] Validate JSON schema is valid JSON
+- [x] Ensure schema covers all current Kanban functionality
+- [x] Verify relationships are properly defined
+
+### Success Criteria:
+- [x] JSON schema file exists and is well-documented
+- [x] Database documentation explains the approach clearly
+- [x] Schema supports current features and future extensibility
+- [x] User approves the database design
+
 Part 6: Backend
 
 Now add API routes to allow the backend to read and change the Kanban for a given user; test this thoroughly with backend unit tests. The database should be created if it doesn't exist.

@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Kanban Database Schema",
+  "description": "Database schema for the Project Management Kanban application",
+  "type": "object",
+  "properties": {
+    "users": {
+      "type": "object",
+      "description": "User accounts table",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Primary key, auto-increment"
+        },
+        "username": {
+          "type": "string",
+          "description": "Unique username for login",
+          "maxLength": 50
+        },
+        "password_hash": {
+          "type": "string",
+          "description": "Hashed password for authentication"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Account creation timestamp"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp"
+        }
+      },
+      "required": ["id", "username", "password_hash", "created_at", "updated_at"]
+    },
+    "boards": {
+      "type": "object",
+      "description": "Kanban boards table",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Primary key, auto-increment"
+        },
+        "user_id": {
+          "type": "integer",
+          "description": "Foreign key to users table"
+        },
+        "name": {
+          "type": "string",
+          "description": "Board name/title",
+          "maxLength": 100
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Board creation timestamp"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp"
+        }
+      },
+      "required": ["id", "user_id", "name", "created_at", "updated_at"]
+    },
+    "columns": {
+      "type": "object",
+      "description": "Kanban columns table",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Primary key, auto-increment"
+        },
+        "board_id": {
+          "type": "integer",
+          "description": "Foreign key to boards table"
+        },
+        "title": {
+          "type": "string",
+          "description": "Column title/name",
+          "maxLength": 100
+        },
+        "position": {
+          "type": "integer",
+          "description": "Column order/position on the board"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Column creation timestamp"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp"
+        }
+      },
+      "required": ["id", "board_id", "title", "position", "created_at", "updated_at"]
+    },
+    "cards": {
+      "type": "object",
+      "description": "Kanban cards table",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Primary key, auto-increment"
+        },
+        "column_id": {
+          "type": "integer",
+          "description": "Foreign key to columns table"
+        },
+        "title": {
+          "type": "string",
+          "description": "Card title",
+          "maxLength": 200
+        },
+        "details": {
+          "type": "string",
+          "description": "Card description/details"
+        },
+        "position": {
+          "type": "integer",
+          "description": "Card order/position within the column"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Card creation timestamp"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp"
+        }
+      },
+      "required": ["id", "column_id", "title", "details", "position", "created_at", "updated_at"]
+    }
+  },
+  "relationships": {
+    "users_to_boards": {
+      "type": "one_to_many",
+      "from": "users.id",
+      "to": "boards.user_id",
+      "description": "One user can have multiple boards"
+    },
+    "boards_to_columns": {
+      "type": "one_to_many",
+      "from": "boards.id",
+      "to": "columns.board_id",
+      "description": "One board can have multiple columns"
+    },
+    "columns_to_cards": {
+      "type": "one_to_many",
+      "from": "columns.id",
+      "to": "cards.column_id",
+      "description": "One column can have multiple cards"
+    }
+  },
+  "indexes": {
+    "users_username": {
+      "table": "users",
+      "columns": ["username"],
+      "unique": true,
+      "description": "Unique index on username for login"
+    },
+    "boards_user_id": {
+      "table": "boards",
+      "columns": ["user_id"],
+      "description": "Index for finding boards by user"
+    },
+    "columns_board_id": {
+      "table": "columns",
+      "columns": ["board_id"],
+      "description": "Index for finding columns by board"
+    },
+    "columns_board_position": {
+      "table": "columns",
+      "columns": ["board_id", "position"],
+      "description": "Index for ordering columns within a board"
+    },
+    "cards_column_id": {
+      "table": "cards",
+      "columns": ["column_id"],
+      "description": "Index for finding cards by column"
+    },
+    "cards_column_position": {
+      "table": "cards",
+      "columns": ["column_id", "position"],
+      "description": "Index for ordering cards within a column"
+    }
+  }
+}
