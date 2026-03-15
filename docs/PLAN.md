@@ -43,6 +43,58 @@ Part 6: Backend
 
 Now add API routes to allow the backend to read and change the Kanban for a given user; test this thoroughly with backend unit tests. The database should be created if it doesn't exist.
 
+### Substeps:
+- [x] Set up SQLite database connection and initialization in backend
+- [x] Create database models/tables based on the schema (users, boards, columns, cards)
+- [x] Implement user authentication API endpoints (login/logout with database)
+- [x] Create Kanban board API endpoints (GET board, create/update columns, create/update/move cards)
+- [x] Add database seeding with initial data for the dummy user
+- [x] Implement proper error handling and validation
+- [x] Write comprehensive backend unit tests for all API endpoints
+- [x] Test database creation and migration on startup
+
+### Tests:
+- [x] Unit tests for database operations (CRUD for all entities)
+- [x] API endpoint tests for authentication
+- [x] API endpoint tests for Kanban operations (get board, modify columns/cards)
+- [x] Database initialization and seeding tests
+- [x] Error handling and validation tests
+- [x] Integration tests for full user workflows
+
+### Success Criteria:
+- [x] All API endpoints return correct data structures
+- [x] Database is created automatically on first run
+- [x] Authentication works with database-backed users
+- [x] Kanban operations persist data correctly
+- [x] All backend unit tests pass
+- [x] API responses match frontend expectations
+
+### Substeps:
+- [ ] Set up SQLite database connection and initialization in backend
+- [ ] Create database models/tables based on the schema (users, boards, columns, cards)
+- [ ] Implement user authentication API endpoints (login/logout with database)
+- [ ] Create Kanban board API endpoints (GET board, create/update columns, create/update/move cards)
+- [ ] Add database seeding with initial data for the dummy user
+- [ ] Implement proper error handling and validation
+- [ ] Write comprehensive backend unit tests for all API endpoints
+- [ ] Test database creation and migration on startup
+
+### Tests:
+- [ ] Unit tests for database operations (CRUD for all entities)
+- [ ] API endpoint tests for authentication
+- [ ] API endpoint tests for Kanban operations (get board, modify columns/cards)
+- [ ] Database initialization and seeding tests
+- [ ] Error handling and validation tests
+- [ ] Integration tests for full user workflows
+
+### Success Criteria:
+- [ ] All API endpoints return correct data structures
+- [ ] Database is created automatically on first run
+- [ ] Authentication works with database-backed users
+- [ ] Kanban operations persist data correctly
+- [ ] All backend unit tests pass
+- [ ] API responses match frontend expectations
+
 Part 7: Frontend + Backend
 
 Now have the frontend actually use the backend API, so that the app is a proper persistent Kanban board. Test very throughly.
