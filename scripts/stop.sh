@@ -1,9 +1,8 @@
 #!/bin/bash
 
-# Stop the container
-docker stop pm-container
+#!/bin/bash
 
-# Remove the container
-docker rm pm-container
+# Stop the app using docker-compose
+docker-compose down
 
 echo "App stopped"

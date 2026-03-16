@@ -1,0 +1,42 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - img [ref=e6]
+      - heading "Welcome to Kanban Studio" [level=1] [ref=e8]
+      - paragraph [ref=e9]: Sign in with your credentials to access your project board
+    - generic [ref=e11]:
+      - generic [ref=e12]:
+        - generic [ref=e13]: Username
+        - generic [ref=e14]:
+          - generic:
+            - img
+          - textbox "Username" [ref=e15]:
+            - /placeholder: Enter your username
+            - text: user
+      - generic [ref=e16]:
+        - generic [ref=e17]: Password
+        - generic [ref=e18]:
+          - generic:
+            - img
+          - textbox "Password" [active] [ref=e19]:
+            - /placeholder: Enter your password
+            - text: password
+      - generic [ref=e21]:
+        - img [ref=e22]
+        - generic [ref=e24]:
+          - paragraph [ref=e25]: Demo Credentials
+          - paragraph [ref=e26]:
+            - text: "Username:"
+            - code [ref=e27]: user
+          - paragraph [ref=e28]:
+            - text: "Password:"
+            - code [ref=e29]: password
+      - button "Sign In" [ref=e30]:
+        - img [ref=e31]
+        - text: Sign In
+    - paragraph [ref=e34]: Project Management MVP • Built with Next.js & FastAPI
+  - alert [ref=e35]
+```

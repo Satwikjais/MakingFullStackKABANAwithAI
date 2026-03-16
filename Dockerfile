@@ -17,17 +17,19 @@ RUN pip install uv
 WORKDIR /app
 
 # Copy backend files
-COPY backend/pyproject.toml backend/
-COPY backend/main.py backend/
+COPY backend/ ./backend/
 
 # Copy built frontend
-COPY --from=frontend-build /app/frontend/out backend/static
+COPY --from=frontend-build /app/frontend/out ./backend/static/
+
+# Copy .env
+COPY .env ./
 
 # Install dependencies
-RUN cd backend && uv pip install --system -r pyproject.toml
+RUN cd backend && uv sync
 
 # Expose port
 EXPOSE 8000
 
 # Run the app
-CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv", "run", "uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"]

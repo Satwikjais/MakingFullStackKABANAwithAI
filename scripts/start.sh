@@ -1,9 +1,8 @@
 #!/bin/bash
 
-# Build the Docker image
-docker build -t pm-app .
+#!/bin/bash
 
-# Run the container
-docker run -d --name pm-container -p 8000:8000 pm-app
+# Start the app using docker-compose
+docker-compose up --build -d
 
 echo "App started at http://localhost:8000"

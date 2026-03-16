@@ -5,11 +5,13 @@ import "./globals.css";
 const displayFont = Space_Grotesk({
   variable: "--font-display",
   subsets: ["latin"],
+  preload: false, // Avoid font preload warning in browser console
 });
 
 const bodyFont = Manrope({
   variable: "--font-body",
   subsets: ["latin"],
+  preload: false, // Avoid font preload warning in browser console
 });
 
 export const metadata: Metadata = {

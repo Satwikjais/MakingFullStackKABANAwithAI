@@ -1,3 +1,2 @@
-docker stop pm-container
-docker rm pm-container
+docker-compose down
 echo App stopped

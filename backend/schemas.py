@@ -140,3 +140,28 @@ class ColumnsResponse(BaseModel):
 class ColumnResponse(BaseModel):
     column: Column
     status: str = "success"
+
+
+# AI Chat schemas
+class ChatMessage(BaseModel):
+    role: str  # "user" or "assistant"
+    content: str
+
+
+class AIChatRequest(BaseModel):
+    user_id: int
+    prompt: str
+    history: List[ChatMessage] = []
+
+
+class AIAction(BaseModel):
+    type: str  # "create_card", "edit_card", "move_card"
+    # Fields depend on type, using extra fields
+    class Config:
+        extra = "allow"
+
+
+class AIChatResponse(BaseModel):
+    message: str
+    actions: List[AIAction] = []
+    status: str = "success"

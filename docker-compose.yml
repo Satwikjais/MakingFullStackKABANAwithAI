@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  pm-app:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/kanban.db:/app/backend/kanban.db  # For database persistence
+    env_file:
+      - .env
